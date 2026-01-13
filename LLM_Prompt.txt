@@ -1,0 +1,10 @@
+Given the PDF of earthquake reports, please perform the following tasks:
+1. Systematically parse through each report entry in the document, one by one. Make sure to process every single valid entry. A valid entry is defined as one that is from the March 22 mainshock of the earthquake, at/near 11:44:21.
+2. For each valid entry, do the following:
+- Extract the specific full address from the location details. For example, from "San Francisco ( 465 California St. )", extract "456 California St, San Francisco, CA 94104". You may not be given information like the zip code, so add it in on your own.
+- Extract its associated descriptive details using the exact wording, such as how long the earthquake lasted or what it felt like. Extract the plain text, ignoring any formatting such as pre-existing quotation marks.
+- Extract the associated earthquake intensity, typically given as a Roman numeral (I to XII). If an entry lacks a rating, disregard the entry entirely.
+- Note that some reports will have an intensity within the entry, while some entries with the same intensities will be grouped together and have the intensity at or near the top of the page. Thus, ensure you check surrounding context.
+- Earthquakes reported as "not felt" or similar should be included and assigned a value of 1. For reports with a range of values, take the average of the range.
+3. Repeat for all entries in the PDF.
+4. As you go, all this information needs to be extracted into a single, clean CSV formatted string with the columns: "Location", "Rating", and "Description". Do not include headers.
