@@ -1,0 +1,22 @@
+Given the PDF of earthquake reports, please perform the following tasks:
+1. Systematically parse through each report entry in the document, one by one. Make sure to process every single valid entry. A valid entry is defined as one that is from the February 9 mainshock of the San Fernando/Sylmar earthquake, at/near 06:00:41.6.
+2. For each valid entry, do the following:
+- Extract the specific full address from the location details. For example, from "San Francisco ( 465 California St. )", extract "456 California St, San Francisco, CA 94104". You may not be given information like the zip code, so add it in on your own.
+- Extract its associated descriptive details using the exact wording, such as how long the earthquake lasted or what it felt like. Extract the plain text, ignoring any formatting such as pre-existing quotation marks.
+- Extract the earthquake intensity rating as a singular number. It will be given in the PDF as a Roman numeral between I and XII, which will need to be converted to Arabic numerals. For earthquakes without a rating, use the event description to assign it a number based on the Modified Mercalli intensity scale for earthquakes. You may use increments of 0.5 for more accuracy. Earthquakes reported as "not felt" or similar should be included and assigned a value of 1. If there is a range of values assigned, take the average.
+3. Repeat for all entries in the PDF.
+4. As you go, all this information needs to be extracted into a single, clean CSV formatted string with the columns: "Location", "Rating", and "Description". Do not include headers.
+
+For reference, here is the Modified Mercalli Intensity (MMI) scale if you need to assign a rating to an entry that doesn't have a rating. Remember, you may use increments of 0.5 for more accuracy.
+I. Not felt - Not felt except by very few under especially favorable conditions.
+II. Weak - Felt only by a few people at rest, especially on upper floors of buildings. Delicately suspended objects may swing.
+III. Weak - Felt quite noticeably by people indoors, especially on upper floors of buildings. Many people do not recognise it as an earthquake. Standing vehicles may slightly rock. Vibrations are similar to the passing of a truck, with duration estimated.
+IV. Light - Felt indoors by many, outdoors by few during the day. At night, some are awakened. Dishes, windows, and doors are disturbed; walls make cracking sounds. Sensations are like a heavy truck striking a building. Standing vehicles are rocked noticeably.
+V. Moderate - Felt by nearly everyone; many awakened. Some dishes and windows are broken. Unstable objects are overturned. Pendulum clocks may stop.
+VI. Strong - Felt by all, and many are frightened. Some heavy furniture is moved; a few instances of fallen plaster occur. Damage is slight.
+VII. Very strong - Damage is negligible in buildings of good design and construction; but slight to moderate in well-built ordinary structures; damage is considerable in poorly built or badly designed structures; some chimneys are broken. Noticed by motorists.
+VIII. Severe - Damage is slight in specially designed structures; considerable damage in ordinary substantial buildings with partial collapse. Damage is great in poorly built structures. The fall of chimneys, factory stacks, columns, monuments, and walls occur. Heavy furniture is overturned. Sand and mud is ejected in small amounts. Changes occur in well water. Motorists are disturbed.
+IX. Violent - Damage is considerable in specially designed structures; well-designed frame structures are thrown off-kilter. Damage is great in substantial buildings, with partial collapse. Buildings are shifted off foundations. Liquefaction occurs. Underground pipes are broken.
+X. Extreme - Some well-built wooden structures are destroyed; most masonry and frame structures are destroyed with foundations. Rails are bent. Landslides are considerable from river banks and steep slopes. Sand and mud is shifted. Water is splashed over banks.
+XI. Extreme - Few, if any, (masonry) structures remain standing. Bridges are destroyed. Broad fissures erupt in the ground. Underground pipelines are rendered completely out of service. Earth slumps and landslips occur on soft ground. Rails are greatly bent.
+XII. Extreme - Damage is total. Waves are seen on ground surfaces. Lines of sight and level are distorted. Objects are thrown upward into the air.
